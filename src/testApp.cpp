@@ -88,22 +88,25 @@ void testApp::update(){
         }
   
     }
-    
-    //synching video stuff. remove for hallway installation. we're synching rutt etra!
-	float p = currentMovie.getPosition();
+
     
     
 	//printf("%f\n",p);
 	
 	// Broadcast current position information of movie
-	if ((!started || count % howOften == 0)) {
+	//if ((!started || count % howOften == 0)) {
 		ofxOscMessage m;
 		m.setAddress( "/movie/position" );
-		m.addFloatArg(p);
+		m.addIntArg(yStep);
+        m.addIntArg(drawRuttEtra);
 		sender1.sendMessage(m);
 		sender2.sendMessage(m);
+        sender3.sendMessage(m);
+		sender4.sendMessage(m);
+        sender5.sendMessage(m);
+		sender6.sendMessage(m);
 		started = true;
-	}
+	
     
      
 	count++;
